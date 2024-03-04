@@ -33,7 +33,7 @@ export default function ProductCard({ product }: Props) {
           <button
             type="button"
             className="ml-2 bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600"
-            onClick={() => addToCart(product)}
+            onClick={() => addToCart(product, 1)}
           >
             Add to Cart
           </button>

@@ -9,7 +9,7 @@ export interface ButtonProps
 
 const QuantityCounter: React.FC<Props> = ({ quantity, setQuantity }) => {
   return (
-    <div className={styles.quantityWrapper}>
+    <div className="flex flex-row	">
       <button
         id="counter-decrement"
         onClick={() => {

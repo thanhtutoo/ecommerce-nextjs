@@ -3,8 +3,6 @@
 import Button from "@/components/ui/Button";
 import QuantityCounter from "@/components/ui/QuantityCounter";
 import { Product } from "@/types";
-
-import styles from "./styles.module.css";
 import { useCartStore } from "@/stores/useCartStore";
 import { useState } from "react";
 

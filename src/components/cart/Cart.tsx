@@ -6,7 +6,6 @@ import useFromStore from "../../hooks/useFromStore";
 
 function Cart() {
   const cart = useFromStore(useCartStore, (state) => state.cart);
-
   let total = 0;
   if (cart) {
     total = cart.reduce(

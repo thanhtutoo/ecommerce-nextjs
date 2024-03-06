@@ -12,6 +12,7 @@ interface State {
 interface Actions {
   addToCart: (Item: Product, quantity: number) => void;
   removeFromCart: (Item: Product) => void;
+  decreaseQuantityFromCart: (Item: Product) => void;
 }
 
 const INITIAL_STATE: State = {
@@ -51,6 +52,22 @@ export const useCartStore = create(
               totalPrice: state.totalPrice + product.price,
             }));
           }
+        }
+      },
+      decreaseQuantityFromCart: (product: Product) => {
+        const cart = get().cart;
+        const cartItem = cart.find((item) => item.id === product.id);
+        if (cartItem) {
+          const updatedCart = cart.map((item) =>
+            item.id === product.id
+              ? { ...item, quantity: (item.quantity as number) - 1 }
+              : item
+          );
+          set((state) => ({
+            cart: updatedCart,
+            totalItems: state.totalItems - 1,
+            totalPrice: state.totalPrice - product.price,
+          }));
         }
       },
       removeFromCart: (product: Product) => {

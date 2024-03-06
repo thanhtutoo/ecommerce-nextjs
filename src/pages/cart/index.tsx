@@ -26,7 +26,9 @@ export default function ProductDetail() {
   //     }
   //   }, [fetchProductDetail, id]);
   const cart = useFromStore(useCartStore, (state) => state.cart);
-
+  const totalPrice = useFromStore(useCartStore, (state) => state.totalPrice);
+  console.log("cart", cart);
+  console.log("totalPrice", totalPrice);
   let total = 0;
   if (cart) {
     total = cart.reduce(
@@ -61,7 +63,9 @@ export default function ProductDetail() {
                     <div className="text-base font-medium text-gray-900">
                       Order total
                     </div>
-                    <div className="font-semibold">${total.toFixed(2)}</div>
+                    <div className="font-semibold">
+                      ${Number(totalPrice).toFixed(2)}
+                    </div>
                   </div>
                 </div>
                 <div className="mt-6">

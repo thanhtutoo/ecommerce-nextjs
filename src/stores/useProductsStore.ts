@@ -31,9 +31,7 @@ export const useProductsStore = create<State & Actions>((set) => ({
       set({ isLoading: true, error: null });
 
       const url = `${process.env.NEXT_PUBLIC_API_URL}/products`;
-      console.log("url", url);
       const response = await fetch(url);
-      console.log("response", response);
       const data = await response.json();
       set({ products: data.products, isLoading: false });
     } catch (error) {
@@ -48,7 +46,6 @@ export const useProductsStore = create<State & Actions>((set) => ({
       const url = `${process.env.NEXT_PUBLIC_API_URL}/products/${id}`;
       const response = await fetch(url);
       const data = await response.json();
-      console.log("data", data);
       set({ productDetail: data, isLoading: false });
     } catch (error) {
       set({ error, isLoading: false });

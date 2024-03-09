@@ -5,9 +5,8 @@ const Category: FC<{
   categories: string[];
   value: string;
   onChange: (category: string) => void;
-}> = ({ categories, value = "all", onChange }) => {
+}> = ({ categories = [], value = "all", onChange }) => {
   const [isPending, startTransition] = useTransition();
-
   const [selectedValue, setSelectedValue] = useState<string>(
     value !== "undefined" ? value : "all"
   );
@@ -26,7 +25,7 @@ const Category: FC<{
   };
 
   return (
-    <div className="max-w-[360px] md:max-w-[200px] mx-auto w-full">
+    <div className="max-w-[360px] md:max-w-[200px]">
       <label
         htmlFor="category"
         className="block text-md font-bold text-gray-700"

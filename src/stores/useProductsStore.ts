@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 import { Product } from "../types";
-
+import { getFilterUrl } from "@/utils/helpers";
 interface State {
   products: Product[];
   isLoading: boolean;
@@ -9,8 +9,16 @@ interface State {
   productDetail: Product;
 }
 
+export interface Query {
+  limit?: number;
+  skip?: number;
+  price?: [number, number];
+  category?: string;
+  stars?: number;
+}
+
 interface Actions {
-  fetchData: () => Promise<void>;
+  fetchData: (query: Query) => Promise<void>;
   fetchProductDetail: (id: string) => Promise<void>;
 }
 
@@ -26,12 +34,10 @@ export const useProductsStore = create<State & Actions>((set) => ({
   productDetail: INITIAL_STATE.productDetail,
   isLoading: INITIAL_STATE.isLoading,
   error: INITIAL_STATE.error,
-  fetchData: async () => {
+  fetchData: async (query: Query) => {
     try {
       set({ isLoading: true, error: null });
-
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/products`;
-      const response = await fetch(url);
+      const response = await fetch(getFilterUrl(query));
       const data = await response.json();
       set({ products: data.products, isLoading: false });
     } catch (error) {

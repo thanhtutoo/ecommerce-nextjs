@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useCartStore } from "../../stores/useCartStore";
 import { useState } from "react";
 import IconButton from "../ui/IconButton";
+import Link from "next/link";
 
 interface Props {
   product: Product;
@@ -35,15 +36,20 @@ export default function CartItem({ product }: Props) {
     <li className="gap-4 mb-2 shadow-md p-4 hover:shadow-xl">
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2 md:flex">
-          <Image
-            src={product.thumbnail}
-            alt={product.title}
-            width={100}
-            height={100}
-            className="h-10 w-10 rounded-full mr-4"
-          />
+          <Link href={`/product/${product.id}`}>
+            <Image
+              src={product.thumbnail}
+              alt={product.title}
+              width={100}
+              height={100}
+              className="h-10 w-10 rounded-full mr-4"
+            />
+          </Link>
+
           <div className="flex flex-col basis-3/5">
-            <span className="font-bold flex-1">{product.title}</span>
+            <Link href={`/product/${product.id}`}>
+              <span className="font-bold flex-1">{product.title}</span>
+            </Link>
             <span className="text-gray-600 font-bold">
               <span className="text-gray-600 font-bold">${product.price}</span>
             </span>

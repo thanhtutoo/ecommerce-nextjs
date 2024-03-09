@@ -15,7 +15,9 @@ const QuantityCounter: React.FC<Props> = ({ quantity, setQuantity }) => {
         onClick={() => {
           setQuantity(quantity - 1);
         }}
-        className={styles.quantityBtn}
+        className={
+          "cursor-pointer bg-white text-black border border-1 border-solid border-gray-400 min-w-10 h-10 w-10"
+        }
       >
         -
       </button>
@@ -23,7 +25,9 @@ const QuantityCounter: React.FC<Props> = ({ quantity, setQuantity }) => {
         id="counter-value"
         type="number"
         value={quantity}
-        className={styles.counterValue}
+        className={
+          "border border-gray-400 my-0.5 px-1 text-center w-25 h-10 m-0 p-0"
+        }
         onChange={(e) => {
           e.preventDefault();
           setQuantity(Number(e.target.value));
@@ -34,7 +38,9 @@ const QuantityCounter: React.FC<Props> = ({ quantity, setQuantity }) => {
         onClick={() => {
           setQuantity(quantity + 1);
         }}
-        className={styles.quantityBtn}
+        className={
+          "cursor-pointer bg-white text-black border border-1 border-solid border-gray-400 min-w-10  h-10 w-10"
+        }
       >
         +
       </button>

@@ -42,7 +42,7 @@ const PriceRange: FC<PriceRangeProps> = ({ value, onChange }) => {
       <div className="flex items-center mt-6">
         <Button
           onClick={() => onChange(debouncedPrice)}
-          className="max-w-[360px] mx-auto w-full rounded-md h-10 flex items-center"
+          className="max-w-[360px] mx-auto w-full rounded-md h-10 flex items-center justify-center"
         >
           Apply
         </Button>

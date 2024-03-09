@@ -9,6 +9,7 @@ import ProductFilters from "@/components/ui/productfilters";
 import { useRouter } from "next/router";
 import qs from "query-string";
 import { useSearchParams } from "next/navigation";
+import Loading from "@/components/ui/Loading";
 
 export default function Home() {
   const { products, isLoading, error, fetchData } = useProductsStore();
@@ -53,19 +54,11 @@ export default function Home() {
     [query, router]
   );
 
-  useEffect(() => {
-    console.log("get called");
-  }, []);
-
   return (
     <AppContainer>
       <main className="container mx-auto md:w-10/12 py-8 px-4">
         <ProductFilters handleQueryChange={handleQueryChange} />
-        {isLoading ? (
-          <div className="text-center text-lg">Loading...</div>
-        ) : (
-          <ProductList products={products} />
-        )}
+        {isLoading ? <Loading /> : <ProductList products={products} />}
       </main>
     </AppContainer>
   );

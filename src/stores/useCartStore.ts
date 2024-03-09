@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
+import { toast } from "react-hot-toast";
 import { Product } from "../types";
 
 interface State {
@@ -28,6 +28,7 @@ export const useCartStore = create(
       totalItems: INITIAL_STATE.totalItems,
       totalPrice: INITIAL_STATE.totalPrice,
       addToCart: (product: Product, quantity = 1) => {
+        let isToasted = false;
         for (let i = 0; i < quantity; i++) {
           const cart = get().cart;
           const cartItem = cart.find((item) => item.id === product.id);
@@ -43,6 +44,10 @@ export const useCartStore = create(
               totalItems: state.totalItems + 1,
               totalPrice: state.totalPrice + product.price,
             }));
+            if (!isToasted) {
+              toast.success("Item quantity updated in cart.");
+              isToasted = true;
+            }
           } else {
             const updatedCart = [...cart, { ...product, quantity: 1 }];
 
@@ -51,6 +56,10 @@ export const useCartStore = create(
               totalItems: state.totalItems + 1,
               totalPrice: state.totalPrice + product.price,
             }));
+            if (!isToasted) {
+              toast.success("Item quantity updated in cart.");
+              isToasted = true;
+            }
           }
         }
       },

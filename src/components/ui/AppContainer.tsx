@@ -3,6 +3,7 @@ import Cart from "../minicart/Cart";
 import Drawer from "./Drawer";
 import Header from "./Header";
 import { useRouter } from "next/router";
+import { Toaster } from "react-hot-toast";
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ const AppContainer: React.FC<ContainerProps> = ({ children }) => {
     <div>
       <Header onCartIconClick={handleCartIconClick} />
       {children}
+      <Toaster />
     </div>
   );
 };

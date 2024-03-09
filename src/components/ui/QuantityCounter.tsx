@@ -25,9 +25,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity, setQuantity }) => {
         id="counter-value"
         type="number"
         value={quantity}
-        className={
-          "border border-gray-400 my-0.5 px-1 text-center w-25 h-10 m-0 p-0"
-        }
+        className={"border border-gray-400  px-1 text-center w-25 h-10 m-0 p-0"}
         onChange={(e) => {
           e.preventDefault();
           setQuantity(Number(e.target.value));

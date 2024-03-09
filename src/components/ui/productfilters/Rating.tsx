@@ -1,6 +1,7 @@
 import { FC } from "react";
 
 import { MdStar } from "react-icons/md";
+import { IoIosStarHalf } from "react-icons/io";
 
 const Rating: FC<{
   selectedStar: number;

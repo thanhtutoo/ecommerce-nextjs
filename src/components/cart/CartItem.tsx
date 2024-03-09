@@ -32,7 +32,7 @@ export default function CartItem({ product }: Props) {
   };
 
   return (
-    <li className="gap-4  mb-2 shadow-md p-4">
+    <li className="gap-4 mb-2 shadow-md p-4 hover:shadow-xl">
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2 md:flex">
           <Image
@@ -65,7 +65,9 @@ export default function CartItem({ product }: Props) {
               className="w-6"
               data-testid={"cart-remove"}
             />
-            <span className="px-2 flex items-center">{quantity}</span>
+            <span className="px-2 flex items-center w-10 justify-center">
+              {quantity}
+            </span>
             <IconButton
               onClick={handleOnIncrease}
               icon={

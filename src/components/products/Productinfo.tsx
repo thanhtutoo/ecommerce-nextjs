@@ -12,8 +12,12 @@ interface InfoProps {
 
 const ProductInfo: React.FC<InfoProps> = ({ data }) => {
   const addToCart = useCartStore((state) => state.addToCart);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
+  const handleAddToCart = () => {
+    if (quantity <= 0) return;
+    addToCart(data, quantity);
+  };
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data?.title}</h1>
@@ -43,17 +47,19 @@ const ProductInfo: React.FC<InfoProps> = ({ data }) => {
           </div>
         </div>
       </div>
-
       <div className="mt-10">
-        <span className="">Quantity</span>
-        <div className="">
-          <QuantityCounter setQuantity={setQuantity} quantity={quantity} />
+        <div className="md:flex bg-gray-200 p-2 rounded-md">
+          <span className="basis-1/2 flex items-center text-lg">Quantity</span>
+          <div className="">
+            <QuantityCounter setQuantity={setQuantity} quantity={quantity} />
+          </div>
         </div>
       </div>
-      <div className="mt-10 flex items-center gap-x-3">
+
+      <div className="mt-4">
         <Button
-          onClick={() => addToCart(data, quantity)}
-          className="flex items-center gap-x-2"
+          onClick={handleAddToCart}
+          className="flex mx-auto w-full rounded-md h-10 items-center justify-center"
           data-testid={"product-add-to-cart"}
         >
           Add To Cart

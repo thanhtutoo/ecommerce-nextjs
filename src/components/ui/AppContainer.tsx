@@ -18,7 +18,7 @@ const AppContainer: React.FC<ContainerProps> = ({ children }) => {
     <div>
       <Header onCartIconClick={handleCartIconClick} />
       {children}
-      <Toaster />
+      <Toaster toastOptions={{ duration: 1000 }} />
     </div>
   );
 };

@@ -65,7 +65,7 @@ export default function CartItem({ product }: Props) {
               className="w-6"
               data-testid={"cart-remove"}
             />
-            <span className="px-2 flex items-center w-10 justify-center">
+            <span className="px-2 flex items-center md:w-10 w-7 justify-center">
               {quantity}
             </span>
             <IconButton

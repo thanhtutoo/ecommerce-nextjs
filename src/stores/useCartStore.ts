@@ -29,37 +29,36 @@ export const useCartStore = create(
       totalPrice: INITIAL_STATE.totalPrice,
       addToCart: (product: Product, quantity = 1) => {
         let isToasted = false;
-        for (let i = 0; i < quantity; i++) {
-          const cart = get().cart;
-          const cartItem = cart.find((item) => item.id === product.id);
 
-          if (cartItem) {
-            const updatedCart = cart.map((item) =>
-              item.id === product.id
-                ? { ...item, quantity: (item.quantity as number) + 1 }
-                : item
-            );
-            set((state) => ({
-              cart: updatedCart,
-              totalItems: state.totalItems + 1,
-              totalPrice: state.totalPrice + product.price,
-            }));
-            if (!isToasted) {
-              toast.success("Item quantity updated in cart.");
-              isToasted = true;
-            }
-          } else {
-            const updatedCart = [...cart, { ...product, quantity: 1 }];
+        const cart = get().cart;
+        const cartItem = cart.find((item) => item.id === product.id);
 
-            set((state) => ({
-              cart: updatedCart,
-              totalItems: state.totalItems + 1,
-              totalPrice: state.totalPrice + product.price,
-            }));
-            if (!isToasted) {
-              toast.success("Item quantity updated in cart.");
-              isToasted = true;
-            }
+        if (cartItem) {
+          const updatedCart = cart.map((item) =>
+            item.id === product.id
+              ? { ...item, quantity: (item.quantity as number) + quantity }
+              : item
+          );
+          set((state) => ({
+            cart: updatedCart,
+            totalItems: state.totalItems + 1,
+            totalPrice: state.totalPrice + product.price,
+          }));
+          if (!isToasted) {
+            toast.success("Item quantity updated in cart.");
+            isToasted = true;
+          }
+        } else {
+          const updatedCart = [...cart, { ...product, quantity: quantity }];
+
+          set((state) => ({
+            cart: updatedCart,
+            totalItems: state.totalItems + 1,
+            totalPrice: state.totalPrice + product.price,
+          }));
+          if (!isToasted) {
+            toast.success("Item quantity updated in cart.");
+            isToasted = true;
           }
         }
       },

@@ -13,8 +13,6 @@ interface Props {
 }
 
 export default function ProductCard({ product }: Props) {
-  const addToCart = useCartStore((state) => state.addToCart);
-
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl flex flex-col justify-between p-4 ">
       <Link href={`/product/${product.id}`}>
@@ -32,7 +30,7 @@ export default function ProductCard({ product }: Props) {
         </Link>
         <p className="text-gray-600 flex-1">{product.category}</p>
         <p className="text-gray-600 flex-1">
-          <StarRating rating={1.5} />
+          <StarRating rating={product.rating} />
         </p>
         <div className="mt-4 flex items-center justify-between">
           <span className="text-gray-800 font-semibold">

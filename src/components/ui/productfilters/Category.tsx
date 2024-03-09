@@ -7,7 +7,7 @@ const Category: FC<{
   onChange: (category: string) => void;
 }> = ({ categories = [], value = "all", onChange }) => {
   const [isPending, startTransition] = useTransition();
-  const [selectedValue, setSelectedValue] = useState<string>(
+  const [_, setSelectedValue] = useState<string>(
     value !== "undefined" ? value : "all"
   );
 
@@ -35,7 +35,7 @@ const Category: FC<{
       <Select
         data-testid="category-select"
         options={["all", ...categories]}
-        value={selectedValue}
+        value={value}
         id="category"
         loading={isPending}
         onOptionSelect={handleOptionSelect}

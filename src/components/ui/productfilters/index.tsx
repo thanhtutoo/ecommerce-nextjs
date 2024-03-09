@@ -44,7 +44,7 @@ const ProductFilters: FC<Props> = ({ handleQueryChange }) => {
   };
 
   const handleResetButton = () => {
-    setSelectedCategory("");
+    setSelectedCategory("all");
     setSelecedStar(0);
     router.push(window.location.origin);
   };

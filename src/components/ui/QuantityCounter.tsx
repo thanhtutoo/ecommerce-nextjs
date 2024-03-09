@@ -1,5 +1,3 @@
-import styles from "./styles.module.css";
-
 export interface Props {
   setQuantity: (value: number) => void;
   quantity: number;
@@ -16,7 +14,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
     }
   };
   return (
-    <div className="flex flex-row	">
+    <div className="flex flex-row	items-center text-center">
       <button
         id="counter-decrement"
         onClick={handleDecreaseBtn}
@@ -30,7 +28,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
         id="counter-value"
         type="number"
         value={quantity}
-        className={"border border-gray-400  px-1 text-center w-25 h-10 m-0 p-0"}
+        className={"border border-gray-400  px-1 text-center w-16 h-10 "}
         onChange={(e) => {
           e.preventDefault();
           setQuantity(parseInt(e.target.value));

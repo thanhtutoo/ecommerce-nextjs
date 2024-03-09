@@ -15,27 +15,16 @@ export default function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = qs.parse(searchParams.toString());
-  const [isFetched, setIsFetched] = useState(false);
-  // const searchParams = useSearchParams();
-  // const param = qs.parse(searchParams.toString());
 
   const { category, stars, price } = router.query;
 
   useEffect(() => {
-    // console.log("fetching data");
-    // if (category || stars || price) {
-    //   console.log("my category", category, query);
-    //   fetchData(query);
-    // } else {
-    console.log("products", products.length);
-    if (products.length === 0 && !isFetched) {
+    if (category || stars || price) {
       fetchData(query);
-      setIsFetched(true);
+    } else {
+      fetchData(query);
     }
-    // }
-  }, [category, stars, price, fetchData, products, isFetched]);
-
-  console.log("query", query);
+  }, [fetchData, category, stars, price]);
 
   const handleQueryChange = useCallback(
     (newQueryValues: {
@@ -63,6 +52,10 @@ export default function Home() {
     },
     [query, router]
   );
+
+  useEffect(() => {
+    console.log("get called");
+  }, []);
 
   return (
     <AppContainer>

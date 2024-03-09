@@ -39,7 +39,22 @@ export const useProductsStore = create<State & Actions>((set) => ({
       set({ isLoading: true, error: null });
       const response = await fetch(getFilterUrl(query));
       const data = await response.json();
-      set({ products: data.products, isLoading: false });
+
+      if (response.ok) {
+        if (query.stars) {
+          const selectedStars = Number(query.stars);
+          data.products = data.products.filter((product: Product) => {
+            return product.rating >= selectedStars;
+          });
+        }
+        if (query.price) {
+          const [min, max] = query.price;
+          data.products = data.products.filter((product: Product) => {
+            return product.price >= min && product.price <= max;
+          });
+        }
+        set({ products: data.products, isLoading: false });
+      }
     } catch (error) {
       console.log("error", error);
       set({ error, isLoading: false });

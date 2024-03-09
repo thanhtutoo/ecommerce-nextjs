@@ -21,7 +21,7 @@ const ProductFilters: FC<Props> = ({ handleQueryChange }) => {
   const searchParams = useSearchParams();
   const query = qs.parse(searchParams.toString());
   const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [selectedStar, setSelecedStar] = useState<number>(2);
+  const [selectedStar, setSelecedStar] = useState<number>(0);
   const router = useRouter();
 
   useEffect(() => {

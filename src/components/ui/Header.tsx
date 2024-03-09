@@ -19,8 +19,8 @@ export default function Header({ onCartIconClick }: Props) {
     );
   }
   return (
-    <header className="text-black py-4 flex items-center justify-between h-14 sticky top-0 z-10 border-b bg-white">
-      <nav className="container mx-auto md:w-10/12 px-4 flex justify-between">
+    <header className="text-black py-4 flex items-center justify-between h-16 sticky top-0 z-10 border-b bg-white items-center">
+      <nav className="container mx-auto md:w-10/12 px-4 flex justify-between  items-center">
         <Link href="/">
           <span className="text-lg font-semibold">My E-commerce</span>
         </Link>

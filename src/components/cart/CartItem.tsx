@@ -1,4 +1,4 @@
-import { FaTrashAlt } from "react-icons/fa";
+import { FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
 
 import { Product } from "../../types";
 import Image from "next/image";
@@ -6,6 +6,7 @@ import { useCartStore } from "../../stores/useCartStore";
 import { useState } from "react";
 import IconButton from "../ui/IconButton";
 import Link from "next/link";
+import { CiCirclePlus } from "react-icons/ci";
 
 interface Props {
   product: Product;
@@ -33,71 +34,56 @@ export default function CartItem({ product }: Props) {
   };
 
   return (
-    <li className="gap-4 mb-2 shadow-md p-4 hover:shadow-xl">
-      <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-2 md:flex">
-          <Link href={`/product/${product.id}`}>
-            <Image
-              src={product.thumbnail}
-              alt={product.title}
-              width={100}
-              height={100}
-              className="h-10 w-10 rounded-full mr-4"
-            />
-          </Link>
-
-          <div className="flex flex-col basis-3/5">
-            <Link href={`/product/${product.id}`}>
-              <span className="font-bold flex-1">{product.title}</span>
-            </Link>
-            <span className="text-gray-600 font-bold">
-              <span className="text-gray-600 font-bold">${product.price}</span>
-            </span>
-          </div>
+    <li className="flex py-6 border-b">
+      <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
+        <Image
+          fill
+          src={product.thumbnail}
+          alt=""
+          className="object-cover object-center"
+        />
+      </div>
+      <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+        <div className="absolute z-10 right-0 top-0">
+          <button
+            title="Remove Item"
+            className="text-red-500 hover:text-red-600 ml-4"
+            onClick={() => removeFromCart(product)}
+          >
+            <FaTrashAlt size={18} />
+          </button>
         </div>
-        <div className="flex">
-          <div className="flex sm:mt-5 sm:mr-5">
-            <IconButton
-              onClick={handleOnDecrease}
-              icon={
-                <Image
-                  src="/images/icons-minus.png"
-                  width="24"
-                  height="24"
-                  alt="plus"
-                />
-              }
-              name="decrease-btn"
-              className="w-6"
-              data-testid={"cart-remove"}
-            />
-            <span className="px-2 flex items-center md:w-10 w-7 justify-center">
-              {quantity}
-            </span>
-            <IconButton
-              onClick={handleOnIncrease}
-              icon={
-                <Image
-                  src="/images/icons-plus.png"
-                  width="24"
-                  height="24"
-                  alt="plus"
-                />
-              }
-              name="increase-btn"
-              className="w-6"
-              data-testid={"cart-remove"}
-            />
+        <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+          <div className="flex justify-between">
+            <p className=" text-lg font-semibold text-black">{product.title}</p>
           </div>
-          <div className="flex sm:mt-5 ">
-            <button
-              title="Remove Item"
-              className="text-red-500 hover:text-red-600 ml-4"
-              onClick={() => removeFromCart(product)}
+          <div className="mt-1 flex text-sm">
+            <p className="text-gray-500">
+              <IconButton
+                onClick={handleOnDecrease}
+                icon={<FaMinus />}
+                name="decrease-btn"
+                className="rounded-full flex items-center justify-center bg-white border shadow-md p-2 hover:scale-110 transition"
+                data-testid={"cart-remove"}
+              />
+            </p>
+            <p
+              className="text-gray-500 pl-4 pt-2 font-semibold"
+              data-testid={"cart-item-quantity"}
             >
-              <FaTrashAlt size={18} />
-            </button>
+              {product.quantity}
+            </p>
+            <p className="pl-4 text-gray-500">
+              <IconButton
+                onClick={handleOnIncrease}
+                icon={<FaPlus />}
+                name="increase-btn"
+                className="rounded-full flex items-center justify-center bg-white border shadow-md p-2 hover:scale-110 transition"
+                data-testid={"cart-remove"}
+              />
+            </p>
           </div>
+          ${product.price}
         </div>
       </div>
     </li>

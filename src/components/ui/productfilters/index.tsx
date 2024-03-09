@@ -1,9 +1,8 @@
 import { FC, useCallback, useEffect, useState, useTransition } from "react";
-import Select from "@/components/ui/Select";
 import { useCategoryStore } from "@/stores/useCategoryStore";
 import Category from "./Category";
 import Rating from "./Rating";
-import PriceRange from "./PriceRange";
+import PriceRange, { PriceRangeProps } from "./PriceRange";
 import qs from "query-string";
 import { useRouter, useSearchParams } from "next/navigation";
 import Button from "../Button";
@@ -35,7 +34,7 @@ const ProductFilters: FC<Props> = ({ handleQueryChange }) => {
     handleQueryChange({ category });
   };
 
-  const handlePriceChange = (price) => {
+  const handlePriceChange = (price: PriceRangeProps["value"]) => {
     handleQueryChange({ price });
   };
 
@@ -59,7 +58,11 @@ const ProductFilters: FC<Props> = ({ handleQueryChange }) => {
       />
       <Rating selectedStar={selectedStar} onChange={handleStarsChange} />
       <PriceRange
-        value={Array.isArray(query.price) ? query.price.map(Number) : [0, 1000]}
+        value={
+          (Array.isArray(query.price)
+            ? query.price.map(Number)
+            : [0, 1000]) as PriceRangeProps["value"]
+        }
         onChange={handlePriceChange}
       />
       <div className="flex items-center mt-6">

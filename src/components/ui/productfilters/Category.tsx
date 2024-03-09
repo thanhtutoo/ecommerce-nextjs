@@ -25,7 +25,6 @@ const Category: FC<{
   };
 
   return (
-    // <div className="max-w-[360px] md:max-w-[200px] w-full">
     <div className="max-w-[360px] mx-auto md:max-w-none md:mx-0">
       <label
         htmlFor="category"

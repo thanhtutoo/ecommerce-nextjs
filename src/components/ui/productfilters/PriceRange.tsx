@@ -3,7 +3,7 @@ import useDebounce from "@/hooks/useDebounce";
 import Input from "../Input";
 import Button from "../Button";
 
-interface PriceRangeProps {
+export interface PriceRangeProps {
   value: [number, number];
   onChange: (value: [number, number]) => void;
 }

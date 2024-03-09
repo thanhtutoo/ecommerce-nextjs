@@ -24,9 +24,7 @@ const ProductInfo: React.FC<InfoProps> = ({ data }) => {
         </h2>
 
         <div className="mt-4 flex items-baseline">
-          <div className="text-gray-900 text-lg font-semibold">
-            {/* <Currency value={data?.price} /> */}
-          </div>
+          <div className="text-gray-900 text-lg font-semibold"></div>
           <div className="ml-2 text-sm text-green-600 font-medium bg-green-200 px-2 py-1 rounded-full">
             {`${data?.discountPercentage}% off`}
           </div>

@@ -20,7 +20,7 @@ const ProductFilters: FC<Props> = ({ handleQueryChange }) => {
     useCategoryStore();
   const searchParams = useSearchParams();
   const query = qs.parse(searchParams.toString());
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedStar, setSelecedStar] = useState<number>(0);
   const router = useRouter();
 
@@ -54,7 +54,7 @@ const ProductFilters: FC<Props> = ({ handleQueryChange }) => {
     <div className=" mx-auto w-full flex gap-2 mb-10">
       <Category
         categories={categories}
-        value="all"
+        value={selectedCategory}
         onChange={handleCategoryChange}
       />
       <Rating selectedStar={selectedStar} onChange={handleStarsChange} />

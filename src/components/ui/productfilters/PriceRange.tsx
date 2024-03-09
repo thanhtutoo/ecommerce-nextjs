@@ -23,11 +23,6 @@ const PriceRange: FC<PriceRangeProps> = ({ value, onChange }) => {
     setLocalValue([localValue[0], newMax]);
   };
 
-  // Notify the parent about the change
-  //   useEffect(() => {
-  //     onChange(debouncedPrice);
-  //   }, [debouncedPrice, onChange]);
-
   return (
     <div className="flex flex-col md:flex-row gap-4 md:min-w-[360px]">
       <Input

@@ -80,17 +80,6 @@ export const useCartStore = create(
     }),
     {
       name: "cart-storage",
-      // getStorage: () => sessionStorage, (optional) by default the 'localStorage' is used
-      // version: 1, // State version number,
-      // migrate: (persistedState: unknown, version: number) => {
-      // 	if (version === 0) {
-      // 		// if the stored value is in version 0, we rename the field to the new name
-      // 		persistedState.totalProducts = persistedState.totalItems
-      // 		delete persistedState.totalItems
-      // 	}
-
-      // 	return persistedState as State & Actions
-      // },
     }
   )
 );

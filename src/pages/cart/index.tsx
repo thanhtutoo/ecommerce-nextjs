@@ -1,13 +1,3 @@
-import { useEffect, useState } from "react";
-
-import Header from "@/components/ui/Header";
-import Drawer from "@/components/ui/Drawer";
-import Cart from "@/components/minicart/Cart";
-import ProductList from "@/components/products/ProductList";
-import { useRouter } from "next/router";
-
-import { useProductsStore } from "@/stores/useProductsStore";
-import ProductDetails from "@/components/products/ProductDetails";
 import AppContainer from "@/components/ui/AppContainer";
 import useFromStore from "@/hooks/useFromStore";
 import { useCartStore } from "@/stores/useCartStore";

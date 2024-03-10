@@ -1,10 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 
 import ProductList from "@/components/products/ProductList";
 
 import { useProductsStore } from "@/stores/useProductsStore";
 import AppContainer from "@/components/ui/AppContainer";
-import Category from "@/components/ui/productfilters/Category";
 import ProductFilters from "@/components/ui/productfilters";
 import { useRouter } from "next/router";
 import qs from "query-string";

@@ -1,9 +1,4 @@
-import { useEffect, useState } from "react";
-
-import Header from "@/components/ui/Header";
-import Drawer from "@/components/ui/Drawer";
-import Cart from "@/components/minicart/Cart";
-import ProductList from "@/components/products/ProductList";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import { useProductsStore } from "@/stores/useProductsStore";

@@ -1,6 +1,3 @@
-import { useState } from "react";
-import Cart from "../minicart/Cart";
-import Drawer from "./Drawer";
 import Header from "./Header";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";

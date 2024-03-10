@@ -15,7 +15,7 @@ export default function ProductDetail() {
       0
     );
   }
-
+  console.log("totalPrice", totalPrice, "total", total);
   return (
     <AppContainer>
       <main className="container mx-auto md:w-10/12 py-8 px-4">

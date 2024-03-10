@@ -12,6 +12,7 @@ export default function ShoppingCart() {
   const handleCartIconClick = () => {
     router.push("/cart");
   };
+
   return (
     <Button
       className="flex items-center rounded-full bg-black px-4 py-2"

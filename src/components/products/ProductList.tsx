@@ -1,3 +1,4 @@
+import Loading from "../ui/Loading";
 import ProductCard from "./ProductCard";
 
 import { Product } from "@/components/products/types";

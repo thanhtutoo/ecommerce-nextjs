@@ -57,7 +57,7 @@ export default function Home() {
     <AppContainer>
       <main className="container mx-auto md:w-10/12 py-8 px-4">
         <ProductFilters handleQueryChange={handleQueryChange} />
-        <ProductList products={products} />
+        {isLoading ? <Loading /> : <ProductList products={products} />}
       </main>
     </AppContainer>
   );

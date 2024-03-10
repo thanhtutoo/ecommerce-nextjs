@@ -1,12 +1,10 @@
 import React from "react";
 import { FaSpinner } from "react-icons/fa";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 const Loading = () => {
   return (
-    <div className=" ">
-      <Skeleton />
+    <div className="md:absolute md:inset-1/2 ">
+      <FaSpinner className="mr-2 top-0.5 animate-spin" size={40} />
     </div>
   );
 };

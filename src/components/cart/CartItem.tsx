@@ -42,15 +42,14 @@ export default function CartItem({ product }: Props) {
         />
       </div>
       <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-        <div className="absolute z-10 right-0 top-0">
-          <button
-            title="Remove Item"
-            className="text-red-500 hover:text-red-600 ml-4"
+        <div className="absolute z-10 right-0 top-0 ">
+          <IconButton
             onClick={() => removeFromCart(product)}
-            data-testid={"cart-remove"}
-          >
-            <FaTrashAlt size={18} />
-          </button>
+            icon={<FaTrashAlt />}
+            name="decrease-btn"
+            className="rounded-full flex items-center justify-center bg-white border shadow-md p-2 hover:scale-110 transition"
+            data-testid={"cart-decrease"}
+          />
         </div>
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div className="flex justify-between">

@@ -3,6 +3,8 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import { toast } from "react-hot-toast";
 import { Product } from "../components/products/types";
 
+// Added test cases with cypress for this store
+// file: cypress/integration/cart.spec.ts
 interface State {
   cart: Product[];
   totalItems: number;

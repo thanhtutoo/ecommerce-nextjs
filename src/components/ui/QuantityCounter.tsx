@@ -1,28 +1,28 @@
-export interface Props {
+import React from "react";
+
+interface Props {
   setQuantity: (value: number) => void;
   quantity: number;
 }
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
   const handleDecreaseBtn = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity(quantity - 1);
-    } else {
-      setQuantity(0);
     }
   };
+
+  const handleIncreaseBtn = () => {
+    setQuantity(quantity + 1);
+  };
+
   return (
-    <div className="flex flex-row	items-center text-center">
+    <div className="flex flex-row items-center justify-center">
       <button
         id="counter-decrement"
         onClick={handleDecreaseBtn}
-        data-cy-btn="counter-decrement"
-        className={
-          "cursor-pointer bg-white text-black border border-1 border-solid border-gray-400 min-w-10 h-10 w-10"
-        }
-        data-testid={"decrement-quantity"}
+        className="cursor-pointer bg-black text-white border border-black min-w-10 h-10 w-10 rounded-l"
+        data-testid="decrement-quantity"
       >
         -
       </button>
@@ -30,23 +30,19 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
         id="counter-value"
         type="number"
         value={quantity}
-        className={"border border-gray-400  px-1 text-center w-16 h-10 "}
-        data-testid={"quantity-input"}
+        className="bg-gray-200 border-black px-4 text-center w-16 h-10"
+        data-testid="quantity-input"
         onChange={(e) => {
           e.preventDefault();
-          setQuantity(parseInt(e.target.value));
+          const value = parseInt(e.target.value);
+          setQuantity(value >= 0 ? value : 0);
         }}
       />
       <button
         id="counter-increment"
-        data-cy-btn="counter-increment"
-        onClick={() => {
-          setQuantity(quantity + 1);
-        }}
-        className={
-          "cursor-pointer bg-white text-black border border-1 border-solid border-gray-400 min-w-10  h-10 w-10"
-        }
-        data-testid={"increment-quantity"}
+        onClick={handleIncreaseBtn}
+        className="cursor-pointer bg-black text-white border border-black min-w-10 h-10 w-10 rounded-r"
+        data-testid="increment-quantity"
       >
         +
       </button>

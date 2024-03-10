@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useCartStore } from "../../stores/useCartStore";
 import { useState } from "react";
 import IconButton from "../ui/IconButton";
+import Link from "next/link";
 
 interface Props {
   product: Product;
@@ -53,7 +54,11 @@ export default function CartItem({ product }: Props) {
         </div>
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div className="flex justify-between">
-            <p className=" text-lg font-semibold text-black">{product.title}</p>
+            <Link href={`/product-detail/${product.id}`}>
+              <p className=" text-lg font-semibold text-black">
+                {product.title}
+              </p>
+            </Link>
           </div>
           <div className="mt-1 flex text-sm">
             <p className="text-gray-500">

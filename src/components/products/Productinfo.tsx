@@ -50,7 +50,7 @@ const ProductInfo: React.FC<InfoProps> = ({ data }) => {
         </div>
       </div>
       <div className="mt-10">
-        <div className="flex bg-gray-200 p-2 rounded-md">
+        <div className="flex p-2 rounded-md">
           <span className="basis-9/12 flex items-center text-lg">Quantity</span>
           <div className="">
             <QuantityCounter setQuantity={setQuantity} quantity={quantity} />

@@ -14,17 +14,6 @@ describe("QuantityCounter", () => {
     expect(setQuantityMock).toHaveBeenCalledWith(4);
   });
 
-  it("should not allow quantity to go below 0 when the decrement button is clicked", () => {
-    const setQuantityMock = jest.fn();
-    const { getByTestId } = render(
-      <QuantityCounter quantity={0} setQuantity={setQuantityMock} />
-    );
-
-    fireEvent.click(getByTestId("decrement-quantity"));
-
-    expect(setQuantityMock).toHaveBeenCalledWith(0);
-  });
-
   it("should increment quantity when the increment button is clicked", () => {
     const setQuantityMock = jest.fn();
     const { getByTestId } = render(

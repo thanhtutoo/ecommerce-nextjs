@@ -23,6 +23,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
         onClick={handleDecreaseBtn}
         className="cursor-pointer bg-black text-white border border-black min-w-10 h-10 w-10 rounded-l"
         data-testid="decrement-quantity"
+        data-cy-btn="decrement-quantity"
       >
         -
       </button>
@@ -43,6 +44,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
         onClick={handleIncreaseBtn}
         className="cursor-pointer bg-black text-white border border-black min-w-10 h-10 w-10 rounded-r"
         data-testid="increment-quantity"
+        data-cy-btn="increment-quantity"
       >
         +
       </button>

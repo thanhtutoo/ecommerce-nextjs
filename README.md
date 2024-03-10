@@ -13,6 +13,7 @@ The application was built with the following steps:
 5. Created custom helper functions.
 6. Set up styling with CSS, currently using global CSS.
 7. Wrote unit tests and end-to-end tests.
+    - Added in git commit hook to run these cypress tests and jest tests
 
 ## Folder Structure
 
@@ -42,4 +43,4 @@ The application was built with the following steps:
 ## Running Tests
 
 - Run `npm test` to execute the unit tests.
-- Run `npm run cypress:open` for cypres end to end tests
+- Run `npx cypress run` for cypres end to end tests

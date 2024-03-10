@@ -33,10 +33,6 @@ The application was built with the following steps:
 - All data fetched through proxy from our NextJS app API
 - Unit and end-to-end testing.
 
-## Limitations and Workarounds
-- All data required to be fetched through proxy from you NextJS app API
-    - Don't have time to make this work.
-
 ## Local Setup
 
 1. Clone the repository.
@@ -46,4 +42,4 @@ The application was built with the following steps:
 ## Running Tests
 
 - Run `npm test` to execute the unit tests.
-- (Include instructions for running the end-to-end tests.)
+- Run `npm run cypress:open` for cypres end to end tests

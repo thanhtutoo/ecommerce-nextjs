@@ -47,6 +47,7 @@ export default function CartItem({ product }: Props) {
             title="Remove Item"
             className="text-red-500 hover:text-red-600 ml-4"
             onClick={() => removeFromCart(product)}
+            data-testid={"cart-remove"}
           >
             <FaTrashAlt size={18} />
           </button>
@@ -62,7 +63,7 @@ export default function CartItem({ product }: Props) {
                 icon={<FaMinus />}
                 name="decrease-btn"
                 className="rounded-full flex items-center justify-center bg-white border shadow-md p-2 hover:scale-110 transition"
-                data-testid={"cart-remove"}
+                data-testid={"cart-decrease"}
               />
             </p>
             <p
@@ -77,7 +78,7 @@ export default function CartItem({ product }: Props) {
                 icon={<FaPlus />}
                 name="increase-btn"
                 className="rounded-full flex items-center justify-center bg-white border shadow-md p-2 hover:scale-110 transition"
-                data-testid={"cart-remove"}
+                data-testid={"cart-increase"}
               />
             </p>
           </div>

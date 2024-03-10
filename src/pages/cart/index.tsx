@@ -51,7 +51,7 @@ export default function ProductDetail() {
                   <Button
                     //   onClick={onCheckout}
                     //   disabled={items.length === 0}
-                    className="w-full mt-6"
+                    className="mt-6  w-full rounded-md"
                   >
                     Checkout
                   </Button>

@@ -40,7 +40,7 @@ export const useCartStore = create(
           set((state) => ({
             cart: updatedCart,
             totalItems: state.totalItems + quantity,
-            totalPrice: state.totalPrice + product.price,
+            totalPrice: state.totalPrice + product.price * quantity,
           }));
 
           toast.success("Item quantity updated in cart.");

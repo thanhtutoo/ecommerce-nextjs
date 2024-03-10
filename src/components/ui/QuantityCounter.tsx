@@ -18,6 +18,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
       <button
         id="counter-decrement"
         onClick={handleDecreaseBtn}
+        data-cy-btn="counter-decrement"
         className={
           "cursor-pointer bg-white text-black border border-1 border-solid border-gray-400 min-w-10 h-10 w-10"
         }
@@ -36,6 +37,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
       />
       <button
         id="counter-increment"
+        data-cy-btn="counter-increment"
         onClick={() => {
           setQuantity(quantity + 1);
         }}

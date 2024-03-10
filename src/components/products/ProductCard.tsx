@@ -9,7 +9,10 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl flex flex-col justify-between p-4 ">
+    <div
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl flex flex-col justify-between p-4 "
+      data-cy-product-id={product.id}
+    >
       <Link href={`/product/${product.id}`}>
         <Image
           src={product.images[0]}

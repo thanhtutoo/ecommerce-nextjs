@@ -31,7 +31,12 @@ export default function Header({ onCartIconClick }: Props) {
             onClick={onCartIconClick}
           >
             <FiShoppingCart size={20} />
-            <span className="ml-2 text-sm font-medium text-white">{total}</span>
+            <span
+              className="ml-2 text-sm font-medium text-white"
+              data-cy-cart-info="total"
+            >
+              {total}
+            </span>
           </Button>
         </div>
       </nav>

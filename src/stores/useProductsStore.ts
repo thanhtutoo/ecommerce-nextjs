@@ -44,7 +44,7 @@ export const useProductsStore = create<State & Actions>((set) => ({
         if (query.stars) {
           const selectedStars = Number(query.stars);
           data.products = data.products.filter((product: Product) => {
-            return product.rating >= selectedStars;
+            return product.rating <= selectedStars;
           });
         }
         if (query.price) {

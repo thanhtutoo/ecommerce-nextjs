@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 import { toast } from "react-hot-toast";
 import { Product } from "../types";
 
@@ -9,10 +9,11 @@ interface State {
   totalPrice: number;
 }
 
-interface Actions {
+export interface CartStore extends State {
   addToCart: (Item: Product, quantity: number) => void;
   removeFromCart: (Item: Product) => void;
   decreaseQuantityFromCart: (Item: Product) => void;
+  emptyCart: () => void;
 }
 
 const INITIAL_STATE: State = {
@@ -22,14 +23,12 @@ const INITIAL_STATE: State = {
 };
 
 export const useCartStore = create(
-  persist<State & Actions>(
+  persist<CartStore>(
     (set, get) => ({
       cart: INITIAL_STATE.cart,
       totalItems: INITIAL_STATE.totalItems,
       totalPrice: INITIAL_STATE.totalPrice,
       addToCart: (product: Product, quantity = 1) => {
-        let isToasted = false;
-
         const cart = get().cart;
         const cartItem = cart.find((item) => item.id === product.id);
 
@@ -44,10 +43,8 @@ export const useCartStore = create(
             totalItems: state.totalItems + 1,
             totalPrice: state.totalPrice + product.price,
           }));
-          if (!isToasted) {
-            toast.success("Item quantity updated in cart.");
-            isToasted = true;
-          }
+
+          toast.success("Item quantity updated in cart.");
         } else {
           const updatedCart = [...cart, { ...product, quantity: quantity }];
 
@@ -56,10 +53,8 @@ export const useCartStore = create(
             totalItems: state.totalItems + 1,
             totalPrice: state.totalPrice + product.price,
           }));
-          if (!isToasted) {
-            toast.success("Item quantity updated in cart.");
-            isToasted = true;
-          }
+
+          toast.success("Item quantity updated in cart.");
         }
       },
       decreaseQuantityFromCart: (product: Product) => {
@@ -85,9 +80,11 @@ export const useCartStore = create(
           totalPrice: state.totalPrice - product.price,
         }));
       },
+      emptyCart: () => set({ cart: [], totalItems: 0, totalPrice: 0 }),
     }),
     {
       name: "cart-storage",
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );

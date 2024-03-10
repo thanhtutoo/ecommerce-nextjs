@@ -25,10 +25,13 @@ const product = {
   ],
 };
 test("clicking add to cart should update the shopping cart", async () => {
-  const mockOnChange = jest.fn();
+  jest.mock("next/router", () => ({
+    useRouter: jest.fn(),
+  }));
+
   render(
     <>
-      <Header onCartIconClick={mockOnChange} />
+      <Header />
       <ProductDetails product={product} />
     </>
   );

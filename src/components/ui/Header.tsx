@@ -6,11 +6,8 @@ import useFromStore from "@/hooks/useFromStore";
 import Link from "next/link";
 import Button from "./Button";
 import ShoppingCart from "./ShoppingCart";
-interface Props {
-  onCartIconClick: () => void;
-}
 
-export default function Header({ onCartIconClick }: Props) {
+export default function Header() {
   return (
     <header className="text-black py-4 flex items-center justify-between h-16 sticky top-0 z-10 border-b bg-white items-center">
       <nav className="container mx-auto md:w-10/12 px-4 flex justify-between  items-center">
@@ -18,7 +15,7 @@ export default function Header({ onCartIconClick }: Props) {
           <span className="text-lg font-semibold">My E-commerce</span>
         </Link>
         <div className="relative">
-          <ShoppingCart onCartIconClick={onCartIconClick} />
+          <ShoppingCart />
         </div>
       </nav>
     </header>

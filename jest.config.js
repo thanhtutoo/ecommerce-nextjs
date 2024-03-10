@@ -9,4 +9,5 @@ module.exports = {
     '^@/stores/(.*)$': '<rootDir>/src/stores/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 };

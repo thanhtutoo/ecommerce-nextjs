@@ -27,9 +27,9 @@ export default function ProductCard({ product }: Props) {
           <h2 className="text-lg font-semibold">{product.title}</h2>
 
           <p className="text-gray-600 flex-1">{product.category}</p>
-          <p className="text-gray-600 flex-1">
+          <div className="text-gray-600 flex-1">
             <StarRating rating={product.rating} />
-          </p>
+          </div>
           <div className="mt-4 flex items-center justify-between">
             <span className="text-gray-800 font-semibold">
               ${product.price.toFixed(2)}

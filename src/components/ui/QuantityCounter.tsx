@@ -22,6 +22,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
         className={
           "cursor-pointer bg-white text-black border border-1 border-solid border-gray-400 min-w-10 h-10 w-10"
         }
+        data-testid={"decrement-quantity"}
       >
         -
       </button>
@@ -30,6 +31,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
         type="number"
         value={quantity}
         className={"border border-gray-400  px-1 text-center w-16 h-10 "}
+        data-testid={"quantity-input"}
         onChange={(e) => {
           e.preventDefault();
           setQuantity(parseInt(e.target.value));
@@ -44,6 +46,7 @@ const QuantityCounter: React.FC<Props> = ({ quantity = 1, setQuantity }) => {
         className={
           "cursor-pointer bg-white text-black border border-1 border-solid border-gray-400 min-w-10  h-10 w-10"
         }
+        data-testid={"increment-quantity"}
       >
         +
       </button>

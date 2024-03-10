@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect, ChangeEvent } from "react";
-import useDebounce from "@/hooks/useDebounce";
 import Input from "../Input";
 import Button from "../Button";
 
@@ -11,7 +10,9 @@ export interface PriceRangeProps {
 const PriceRange: FC<PriceRangeProps> = ({ value, onChange }) => {
   const [localValue, setLocalValue] = useState(value);
 
-  const debouncedPrice = useDebounce(localValue);
+  useEffect(() => {
+    setLocalValue(value);
+  }, [value]);
 
   const handleMinValChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newMin = Number(e.target.value);
@@ -41,7 +42,7 @@ const PriceRange: FC<PriceRangeProps> = ({ value, onChange }) => {
       />
       <div className="flex items-center mt-6">
         <Button
-          onClick={() => onChange(debouncedPrice)}
+          onClick={() => onChange(localValue)}
           className="max-w-[360px] mx-auto w-full rounded-md h-10 flex items-center justify-center"
         >
           Apply

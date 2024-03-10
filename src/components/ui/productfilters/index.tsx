@@ -6,6 +6,8 @@ import PriceRange, { PriceRangeProps } from "./PriceRange";
 import qs from "query-string";
 import { useRouter, useSearchParams } from "next/navigation";
 import Button from "../Button";
+import { Product } from "@/components/products/types";
+import { getProductsPriceRange } from "@/utils/helpers";
 
 interface Props {
   handleQueryChange: (newQueryValues: {
@@ -13,8 +15,9 @@ interface Props {
     price?: [number, number];
     stars?: number;
   }) => void;
+  products: Product[];
 }
-const ProductFilters: FC<Props> = ({ handleQueryChange }) => {
+const ProductFilters: FC<Props> = ({ handleQueryChange, products }) => {
   const { categories, isLoading, error, fetchCategoryData } =
     useCategoryStore();
   const searchParams = useSearchParams();
@@ -22,7 +25,8 @@ const ProductFilters: FC<Props> = ({ handleQueryChange }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedStar, setSelecedStar] = useState<number>(0);
   const router = useRouter();
-
+  const priceRange = getProductsPriceRange(products);
+  console.log("priceRange", priceRange);
   useEffect(() => {
     if (categories.length === 0) {
       fetchCategoryData();
@@ -61,7 +65,7 @@ const ProductFilters: FC<Props> = ({ handleQueryChange }) => {
         value={
           (Array.isArray(query.price)
             ? query.price.map(Number)
-            : [0, 1000]) as PriceRangeProps["value"]
+            : priceRange) as PriceRangeProps["value"]
         }
         onChange={handlePriceChange}
       />

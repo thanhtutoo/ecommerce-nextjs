@@ -31,7 +31,6 @@ export const useCartStore = create(
       addToCart: (product: Product, quantity = 1) => {
         const cart = get().cart;
         const cartItem = cart.find((item) => item.id === product.id);
-        console.log("product", product);
         if (cartItem) {
           const updatedCart = cart.map((item) =>
             item.id === product.id
@@ -40,7 +39,7 @@ export const useCartStore = create(
           );
           set((state) => ({
             cart: updatedCart,
-            totalItems: state.totalItems + 1,
+            totalItems: state.totalItems + quantity,
             totalPrice: state.totalPrice + product.price,
           }));
 
@@ -50,7 +49,7 @@ export const useCartStore = create(
 
           set((state) => ({
             cart: updatedCart,
-            totalItems: state.totalItems + 1,
+            totalItems: state.totalItems + quantity,
             totalPrice: state.totalPrice + product.price,
           }));
 

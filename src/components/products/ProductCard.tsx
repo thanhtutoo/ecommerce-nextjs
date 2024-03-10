@@ -22,21 +22,21 @@ export default function ProductCard({ product }: Props) {
           height={100}
           className="object-contain w-full h-40"
         />
-      </Link>
-      <div className="flex-1 flex flex-col justify-between">
-        <Link href={`/product/${product.id}`}>
+
+        <div className="flex-1 flex flex-col justify-between">
           <h2 className="text-lg font-semibold">{product.title}</h2>
-        </Link>
-        <p className="text-gray-600 flex-1">{product.category}</p>
-        <p className="text-gray-600 flex-1">
-          <StarRating rating={product.rating} />
-        </p>
-        <div className="mt-4 flex items-center justify-between">
-          <span className="text-gray-800 font-semibold">
-            ${product.price.toFixed(2)}
-          </span>
+
+          <p className="text-gray-600 flex-1">{product.category}</p>
+          <p className="text-gray-600 flex-1">
+            <StarRating rating={product.rating} />
+          </p>
+          <div className="mt-4 flex items-center justify-between">
+            <span className="text-gray-800 font-semibold">
+              ${product.price.toFixed(2)}
+            </span>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

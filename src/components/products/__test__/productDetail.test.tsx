@@ -24,7 +24,7 @@ const product = {
     "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
   ],
 };
-test("renders a button with the correct text", async () => {
+test("clicking add to cart should update the shopping cart", async () => {
   const mockOnChange = jest.fn();
   render(
     <>

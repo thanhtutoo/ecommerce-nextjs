@@ -24,7 +24,7 @@ export const useCategoryStore = create<State & Actions>((set) => ({
     try {
       set({ isLoading: true, error: null });
 
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/products/categories`;
+      const url = "/products/categories"; // Use the rewritten URL
 
       const response = await fetch(url);
 

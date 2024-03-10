@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Product } from "@/types.d";
+import { Product } from "@/components/products/types";
 import Link from "next/link";
 import StarRating from "../ui/StarRating";
 
@@ -12,6 +12,7 @@ export default function ProductCard({ product }: Props) {
     <div
       className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl flex flex-col justify-between p-4 "
       data-cy-product-id={product.id}
+      key={product.id}
     >
       <Link href={`/product/${product.id}`}>
         <Image

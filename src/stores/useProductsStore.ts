@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { Product } from "../types";
+import { Product } from "../components/products/types";
 import { getFilterUrl } from "@/utils/helpers";
 interface State {
   products: Product[];

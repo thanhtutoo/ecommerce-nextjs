@@ -1,6 +1,6 @@
 import Button from "@/components/ui/Button";
 import QuantityCounter from "@/components/ui/QuantityCounter";
-import { Product } from "@/types";
+import { Product } from "@/components/products/types";
 import { useCartStore } from "@/stores/useCartStore";
 import { useState } from "react";
 
@@ -60,6 +60,7 @@ const ProductInfo: React.FC<InfoProps> = ({ data }) => {
           className="flex mx-auto w-full rounded-md h-10 items-center justify-center"
           data-testid={"product-add-to-cart"}
           data-cy-btn="product-add-to-cart"
+          role="buttonAddToCart"
         >
           Add To Cart
         </Button>

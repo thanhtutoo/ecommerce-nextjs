@@ -1,4 +1,4 @@
-import { Product } from "@/types.d";
+import { Product } from "@/components/products/types";
 import Gallery from "../gallery";
 import ProductInfo from "./Productinfo";
 

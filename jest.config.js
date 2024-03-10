@@ -5,6 +5,8 @@ module.exports = {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
 
     '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@/stores/(.*)$': '<rootDir>/src/stores/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
 };

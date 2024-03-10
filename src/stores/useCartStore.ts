@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { toast } from "react-hot-toast";
-import { Product } from "../types";
+import { Product } from "../components/products/types";
 
 interface State {
   cart: Product[];
@@ -31,7 +31,7 @@ export const useCartStore = create(
       addToCart: (product: Product, quantity = 1) => {
         const cart = get().cart;
         const cartItem = cart.find((item) => item.id === product.id);
-
+        console.log("product", product);
         if (cartItem) {
           const updatedCart = cart.map((item) =>
             item.id === product.id

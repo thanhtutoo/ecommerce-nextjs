@@ -1,7 +1,7 @@
 import NextImage from "next/image";
 import { Tab } from "@headlessui/react";
 
-import { Product } from "@/types";
+import { Product } from "@/components/products/types";
 
 import GalleryTab from "./gallery-tab";
 

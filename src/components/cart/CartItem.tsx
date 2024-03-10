@@ -1,6 +1,6 @@
 import { FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
 
-import { Product } from "../../types";
+import { Product } from "../products/types";
 import Image from "next/image";
 import { useCartStore } from "../../stores/useCartStore";
 import { useState } from "react";

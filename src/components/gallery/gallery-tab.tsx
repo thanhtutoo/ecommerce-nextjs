@@ -1,5 +1,6 @@
 import NextImage from "next/image";
 import { Tab } from "@headlessui/react";
+import clsx from "clsx";
 
 interface GalleryTabProps {
   image: string;
@@ -20,12 +21,12 @@ const GalleryTab: React.FC<GalleryTabProps> = ({ image, title }) => {
               className="object-cover object-center"
             />
           </span>
-          {/* <span
-            className={(
+          <span
+            className={clsx(
               "absolute inset-0 rounded-md ring-2 ring-offset-2",
               selected ? "ring-black" : "ring-transparent"
             )}
-          /> */}
+          />
         </div>
       )}
     </Tab>

@@ -20,7 +20,7 @@ export function getProductsPriceRange(products: Product[]): [number, number] {
   if (!products.length) {
     return [0, 0];
   }
-  console.log("products", products);
+
   return products.reduce(
     (acc, cur) => {
       return [

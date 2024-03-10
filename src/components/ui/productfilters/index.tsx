@@ -26,7 +26,7 @@ const ProductFilters: FC<Props> = ({ handleQueryChange, products }) => {
   const [selectedStar, setSelecedStar] = useState<number>(0);
   const router = useRouter();
   const priceRange = getProductsPriceRange(products);
-  console.log("priceRange", priceRange);
+
   useEffect(() => {
     if (categories.length === 0) {
       fetchCategoryData();

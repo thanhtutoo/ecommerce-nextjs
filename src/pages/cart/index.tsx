@@ -8,14 +8,6 @@ export default function ProductDetail() {
   const cart = useFromStore(useCartStore, (state) => state.cart);
   const totalPrice = useFromStore(useCartStore, (state) => state.totalPrice);
 
-  let total = 0;
-  if (cart) {
-    total = cart.reduce(
-      (acc, product) => acc + product.price * (product.quantity as number),
-      0
-    );
-  }
-  console.log("totalPrice", totalPrice, "total", total);
   return (
     <AppContainer>
       <main className="container mx-auto md:w-10/12 py-8 px-4">

@@ -67,7 +67,6 @@ export const useCartStore = create(
               ? { ...item, quantity: (item.quantity as number) - 1 }
               : item
           );
-          console.log("state.totalPrice", get().totalPrice);
           set((state) => ({
             cart: updatedCart,
             totalItems: state.totalItems - 1,
@@ -76,10 +75,21 @@ export const useCartStore = create(
         }
       },
       removeFromCart: (product: Product) => {
+        const productFromCart = get().cart.filter(
+          (item) => item.id == product.id
+        );
+        const productQuantity =
+          productFromCart.length > 0 ? productFromCart[0].quantity : 1;
+
+        const currentTotalItems = get().totalItems;
+        const totalItems = currentTotalItems - Number(productQuantity);
+
+        const totalPrice =
+          get().totalPrice - product.price * Number(productQuantity);
         set((state) => ({
           cart: state.cart.filter((item) => item.id !== product.id),
-          totalItems: state.totalItems - 1,
-          totalPrice: state.totalPrice - product.price,
+          totalItems: totalItems,
+          totalPrice: totalPrice,
         }));
       },
       emptyCart: () => set({ cart: [], totalItems: 0, totalPrice: 0 }),

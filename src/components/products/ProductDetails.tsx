@@ -1,7 +1,3 @@
-import Image from "next/image";
-
-import { useCartStore } from "../../stores/useCartStore";
-
 import { Product } from "@/types.d";
 import Gallery from "../gallery";
 import ProductInfo from "./Productinfo";

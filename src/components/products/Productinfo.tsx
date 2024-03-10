@@ -1,5 +1,3 @@
-"use client";
-
 import Button from "@/components/ui/Button";
 import QuantityCounter from "@/components/ui/QuantityCounter";
 import { Product } from "@/types";

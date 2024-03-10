@@ -1,59 +1,10 @@
 import React from "react";
-import { motion } from "framer-motion";
-
-const loadingContainerVariants = {
-  start: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-  end: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const loadingCircleVariants = {
-  start: {
-    y: "0%",
-  },
-  end: {
-    y: "100%",
-  },
-};
-
-const loadingCircleTransition = {
-  duration: 0.4,
-  yoyo: Infinity,
-  ease: "easeInOut",
-};
+import { FaSpinner } from "react-icons/fa";
 
 const Loading = () => {
   return (
-    <div className="md:absolute md:inset-1/2">
-      <motion.div
-        className="w-8 h-8 flex justify-around"
-        variants={loadingContainerVariants}
-        initial="start"
-        animate="end"
-      >
-        <motion.span
-          className="block w-2 h-2 bg-black rounded-sm"
-          variants={loadingCircleVariants}
-          transition={loadingCircleTransition}
-        />
-        <motion.span
-          className="block w-2 h-2 bg-black rounded-sm"
-          variants={loadingCircleVariants}
-          transition={loadingCircleTransition}
-        />
-        <motion.span
-          className="block w-2 h-2 bg-black rounded-sm"
-          variants={loadingCircleVariants}
-          transition={loadingCircleTransition}
-        />
-      </motion.div>
+    <div className="md:absolute md:inset-1/2 ">
+      <FaSpinner className="mr-2 top-0.5 animate-spin" size={40} />
     </div>
   );
 };

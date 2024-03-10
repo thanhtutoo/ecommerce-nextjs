@@ -5,8 +5,6 @@ import Image from "next/image";
 import { useCartStore } from "../../stores/useCartStore";
 import { useState } from "react";
 import IconButton from "../ui/IconButton";
-import Link from "next/link";
-import { CiCirclePlus } from "react-icons/ci";
 
 interface Props {
   product: Product;

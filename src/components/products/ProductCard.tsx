@@ -1,12 +1,7 @@
 import Image from "next/image";
-import { motion } from "framer-motion";
-
-import { useCartStore } from "../../stores/useCartStore";
-
 import { Product } from "@/types.d";
 import Link from "next/link";
 import StarRating from "../ui/StarRating";
-import Button from "../ui/Button";
 
 interface Props {
   product: Product;

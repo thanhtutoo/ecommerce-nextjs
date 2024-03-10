@@ -1,5 +1,3 @@
-"use client";
-
 import NextImage from "next/image";
 import { Tab } from "@headlessui/react";
 

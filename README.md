@@ -34,6 +34,9 @@ The application was built with the following steps:
 - All data fetched through proxy from our NextJS app API
 - Unit and end-to-end testing.
 
+## Todo features
+- integrate payment gateway at checkout page
+
 ## Local Setup
 
 1. Clone the repository.

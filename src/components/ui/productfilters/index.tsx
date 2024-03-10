@@ -54,7 +54,7 @@ const ProductFilters: FC<Props> = ({ handleQueryChange, products }) => {
   };
 
   return (
-    <div className=" mx-auto w-full md:flex gap-2 mb-10">
+    <div className="mx-auto w-full lg:flex gap-2 mb-10">
       <Category
         categories={categories}
         value={selectedCategory}
@@ -69,7 +69,7 @@ const ProductFilters: FC<Props> = ({ handleQueryChange, products }) => {
         }
         onChange={handlePriceChange}
       />
-      <div className="flex items-center mt-6">
+      <div className="flex items-center mt-6 ">
         <Button
           onClick={handleResetButton}
           className="max-w-[360px] mx-auto w-full rounded-md h-10 flex items-center justify-center"

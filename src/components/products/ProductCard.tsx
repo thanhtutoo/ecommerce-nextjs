@@ -14,7 +14,7 @@ export default function ProductCard({ product }: Props) {
       data-cy-product-id={product.id}
       key={product.id}
     >
-      <Link href={`/product/${product.id}`}>
+      <Link href={`/product-detail/${product.id}`}>
         <Image
           src={product.images[0]}
           alt={product.title}

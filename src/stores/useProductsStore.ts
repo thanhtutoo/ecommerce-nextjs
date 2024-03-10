@@ -64,7 +64,7 @@ export const useProductsStore = create<State & Actions>((set) => ({
     try {
       set({ isLoading: true, error: null });
 
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/products/${id}`;
+      const url = `/products/${id}`;
       const response = await fetch(url);
       const data = await response.json();
       set({ productDetail: data, isLoading: false });

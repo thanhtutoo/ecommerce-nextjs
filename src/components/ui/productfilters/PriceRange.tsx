@@ -15,12 +15,12 @@ const PriceRange: FC<PriceRangeProps> = ({ value, onChange }) => {
   }, [value]);
 
   const handleMinValChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newMin = Number(e.target.value);
+    const newMin = parseInt(e.target.value);
     setLocalValue([newMin, localValue[1]]);
   };
 
   const handleMaxValChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newMax = Number(e.target.value);
+    const newMax = parseInt(e.target.value);
     setLocalValue([localValue[0], newMax]);
   };
 

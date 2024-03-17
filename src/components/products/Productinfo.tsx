@@ -61,7 +61,7 @@ const ProductInfo: React.FC<InfoProps> = ({ data }) => {
       <div className="mt-4">
         <Button
           onClick={handleAddToCart}
-          className="flex mx-auto w-full rounded-md h-10 items-center justify-center hover:animate-bounce"
+          className="flex mx-auto w-full rounded-md h-10 items-center justify-center"
           data-testid={"product-add-to-cart"}
           data-cy-btn="product-add-to-cart"
           role="buttonAddToCart"

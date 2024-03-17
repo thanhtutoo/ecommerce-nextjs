@@ -45,9 +45,6 @@ export default function Home() {
         { skipNull: true }
       );
 
-      /**
-       * @todo this is triggering multiple renders.
-       */
       router.push(url);
     },
     [query, router]

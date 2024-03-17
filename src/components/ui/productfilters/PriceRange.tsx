@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect, ChangeEvent } from "react";
 import Input from "../Input";
 import Button from "../Button";
+import useDebounce from "@/hooks/useDebounce"; // Assuming useDebounce is in the same directory
 
 export interface PriceRangeProps {
   value: [number, number];
@@ -9,19 +10,25 @@ export interface PriceRangeProps {
 
 const PriceRange: FC<PriceRangeProps> = ({ value, onChange }) => {
   const [localValue, setLocalValue] = useState(value);
+  const debouncedOnChange = useDebounce(onChange, 1500);
 
   useEffect(() => {
     setLocalValue(value);
   }, [value]);
 
+  const handleChange = (newValue: [number, number]) => {
+    setLocalValue(newValue);
+    debouncedOnChange(newValue);
+  };
+
   const handleMinValChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newMin = parseInt(e.target.value);
-    setLocalValue([newMin, localValue[1]]);
+    handleChange([newMin, localValue[1]]);
   };
 
   const handleMaxValChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newMax = parseInt(e.target.value);
-    setLocalValue([localValue[0], newMax]);
+    handleChange([localValue[0], newMax]);
   };
 
   return (
@@ -37,17 +44,9 @@ const PriceRange: FC<PriceRangeProps> = ({ value, onChange }) => {
         type="number"
         id="priceMax"
         label="Max Price"
-        value={localValue[1]}
+        value={String(localValue[1])}
         onChange={handleMaxValChange}
       />
-      <div className="flex items-center mt-6">
-        <Button
-          onClick={() => onChange(localValue)}
-          className="max-w-[360px] mx-auto w-full rounded-md h-10 flex items-center justify-center"
-        >
-          Apply
-        </Button>
-      </div>
     </div>
   );
 };

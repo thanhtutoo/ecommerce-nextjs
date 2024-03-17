@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor, act } from "@testing-library/react";
 import PriceRange from "../PriceRange";
 
 describe("PriceRange", () => {
@@ -27,15 +27,28 @@ describe("PriceRange", () => {
     expect(maxPriceInput.value).toBe("150");
   });
 
-  it("should call onChange with the correct localValue when Apply button is clicked", () => {
+  test("should trigger onChange after debounce timeout", async () => {
+    jest.useFakeTimers();
+
     const onChangeMock = jest.fn();
-    const { getByText } = render(
-      <PriceRange value={[50, 100]} onChange={onChangeMock} />
+    const { getByLabelText } = render(
+      <PriceRange value={[0, 0]} onChange={onChangeMock} />
     );
 
-    const applyButton = getByText("Apply");
-    fireEvent.click(applyButton);
+    const minInput = getByLabelText("Min Price") as HTMLInputElement;
+    const maxInput = getByLabelText("Max Price") as HTMLInputElement;
 
-    expect(onChangeMock).toHaveBeenCalledWith([50, 100]);
+    await act(async () => {
+      fireEvent.change(minInput, { target: { value: "50" } });
+      fireEvent.change(maxInput, { target: { value: "100" } });
+      // Fast-forward time
+      jest.advanceTimersByTime(1500);
+
+      // Wait for debounce timeout
+      await waitFor(() => {
+        expect(onChangeMock).toHaveBeenCalledTimes(1);
+        expect(onChangeMock).toHaveBeenCalledWith([50, 100]);
+      });
+    });
   });
 });

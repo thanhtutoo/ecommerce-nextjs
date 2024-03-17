@@ -37,6 +37,8 @@ The application was built with the following steps:
 ## Todo features
 - integrate payment gateway at checkout page
 - to add more animation
+- to add more test cases
+- to seperate the api call in different file
 
 ## Local Setup
 
